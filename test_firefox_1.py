@@ -1,7 +1,12 @@
 from selenium import webdriver
-  
-driver = webdriver.Firefox()
-driver.get("https://google.co.in")
-print(driver.title)
-print(driver.current_url)
-driver.close()
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+cap = DesiredCapabilities().FIREFOX
+cap["marionette"] = False
+browser = webdriver.Firefox(capabilities=cap, executable_path="C:\\path\\to\\geckodriver.exe")
+browser.get('http://google.com/')
+print(browser.title)
+print(browser.current_url)
+browser.quit()
+
+
